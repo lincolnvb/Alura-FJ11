@@ -1,23 +1,83 @@
-class Conta{
+public class Conta{
 	
-	int numero;
-	String titular;
-	double saldo;
-	double limite;
+	private String titular;
+	private int numero;
+	private String agencia;
+	private double saldo;
+	private String dataAbertura;
+	private double limite;
+	
+	public String getTitular (){
+		return titular;
+	}
+	
+	public void setTitular(String titular){
+		this.titular = titular;
+	}
 
+	
+	public int getNumero(){
+		return numero;
+	}
+
+	public void setNumero (int numero){
+		this.numero = numero;
+	}	
+		
+	public String getAgencia(){
+		return agencia;
+	}	
+
+	public void setAgencia(String agencia){
+		this.agencia = agencia;
+	}
+
+	public double getSaldo(){
+		return saldo;
+	}
+
+	public String getDataAbertura(){
+		return dataAbertura;	
+	} 
+
+	public void setDataAbertura(String dataAbertura){
+		this.dataAbertura = dataAbertura;
+	}
+	
+	public double getLimite(){
+		return limite;
+	}		
+
+	public void setLimite(double limite){
+		this.limite = limite;
+	}
+
+	public Conta(){
+		limite = 1000;
+	}
+	
+	public Conta(String titular){
+		this.titular = titular;
+	}
+		
+
+	String recuperaDadosImpressao () {	
+		System.out.println("===========================");		
+		String dados = "Titular: " + this.titular;
+		dados += "\nNúmero: " + this.numero;
+		dados += "\nSaldo: " + this.saldo;
+		dados += "\nRendimento mensal: " + this.calculaRendimento();
+		System.out.println(dados);
+		System.out.println("===========================");		
+		return dados;
+	}
+	
 	boolean saca(double valor) {
 		if(valor > 0 && saldo + limite >= valor){
 			saldo -= valor;
 			return true;
 		}
 		return false;	
-	}
-	
-	void mostra () {
-	System.out.println("///////////////////////////////////");
-	System.out.println("Titular: " + titular);
-	System.out.println("Saldo: " + saldo);
-	System.out.println("///////////////////////////////////");
 	}
 
 	void deposita (double valor) {
@@ -29,6 +89,10 @@ class Conta{
 			destino.deposita(valor);
 		}
 
+	}
+
+	 double calculaRendimento(){
+		return saldo * 0.1;
 	}
 
 }	
