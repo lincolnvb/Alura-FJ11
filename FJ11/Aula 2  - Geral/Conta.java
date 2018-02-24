@@ -5,9 +5,13 @@ class Conta{
 	double saldo;
 	double limite;
 
-	void saca(double valor) {
-	saldo = saldo - valor;
-	}	
+	boolean saca(double valor) {
+		if(valor > 0 && saldo + limite >= valor){
+			saldo -= valor;
+			return true;
+		}
+		return false;	
+	}
 	
 	void mostra () {
 	System.out.println("///////////////////////////////////");
@@ -17,8 +21,19 @@ class Conta{
 	}
 
 	void deposita (double valor) {
-		saldo += valor;
+			saldo += valor;
+		}
+	
+	void transfere (Conta destino, double valor){
+		if (saca(valor)) {
+			destino.deposita(valor);
+		}
+
 	}
+
+}	
+
+
+
 	
 
-}
