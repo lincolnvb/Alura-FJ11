@@ -15,4 +15,10 @@ class Conta{
 	System.out.println("Saldo: " + saldo);
 	System.out.println("///////////////////////////////////");
 	}
+
+	void deposita (double valor) {
+		saldo += valor;
+	}
+	
+
 }
