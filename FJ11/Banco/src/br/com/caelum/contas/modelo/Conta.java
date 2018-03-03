@@ -12,9 +12,13 @@ public class Conta {
 	private String titular;
 	private int numero;
 	private String agencia;
-	private double saldo;
+	protected double saldo;
 	private String dataAbertura;
 	private double limite;
+	
+	public String getTipo(){
+		return "Conta";
+	}
 	
 	public String getTitular (){
 		return titular;
@@ -108,6 +112,13 @@ public class Conta {
 	 double calculaRendimento(){
 		return saldo * 0.1;
 	}
+	 
+	 public void transfere(double valor, Conta conta){
+		 this.saca(valor);
+		 conta.deposita(valor);
+		 
+	 }
+	 
 
 }	
 

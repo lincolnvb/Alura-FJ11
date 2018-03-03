@@ -7,6 +7,7 @@ public class Funcionario {
 	private String cpf;
 	private String rg;
 	private String cargo;
+	
 	public int getMatricula() {
 		return matricula;
 	}
@@ -37,6 +38,20 @@ public class Funcionario {
 	public void setCargo(String cargo) {
 		this.cargo = cargo;
 	}
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
 		
 	
 }
