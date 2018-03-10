@@ -1,12 +1,23 @@
 package br.com.caelum.contas.modelo;
 
-public class Funcionario {
-	
+public abstract class Funcionario {
+
 	private int matricula;
 	private String nome;
 	private String cpf;
 	private String rg;
 	private String cargo;
+	private double salario;
+	
+	public double getSalario() {
+		return salario;
+	}
+
+	public void setSalario(double salario) {
+		this.salario = salario;
+	}
+
+	public abstract double getBonificacao();
 	
 	public int getMatricula() {
 		return matricula;

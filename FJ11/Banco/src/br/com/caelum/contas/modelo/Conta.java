@@ -7,28 +7,26 @@ package br.com.caelum.contas.modelo;
  *
  */
 
-public class Conta {
-	
+public abstract class Conta {
+
 	private String titular;
 	private int numero;
 	private String agencia;
 	protected double saldo;
 	private String dataAbertura;
 	private double limite;
-	
-	public String getTipo(){
-		return "Conta";
-	}
-	
+
+	public abstract String getTipo();
+
 	public String getTitular (){
 		return titular;
 	}
-	
+
 	public void setTitular(String titular){
 		this.titular = titular;
 	}
 
-	
+
 	public int getNumero(){
 		return numero;
 	}
@@ -36,7 +34,7 @@ public class Conta {
 	public void setNumero (int numero){
 		this.numero = numero;
 	}	
-		
+
 	public String getAgencia(){
 		return agencia;
 	}	
@@ -56,7 +54,7 @@ public class Conta {
 	public void setDataAbertura(String dataAbertura){
 		this.dataAbertura = dataAbertura;
 	}
-	
+
 	public double getLimite(){
 		return limite;
 	}		
@@ -68,11 +66,11 @@ public class Conta {
 	public Conta(){
 		limite = 1000;
 	}
-	
+
 	public Conta(String titular){
 		this.titular = titular;
 	}
-		
+
 
 	String recuperaDadosImpressao () {	
 		System.out.println("===========================");		
@@ -84,7 +82,7 @@ public class Conta {
 		System.out.println("===========================");		
 		return dados;
 	}
-	
+
 	/**
 	 * 
 	 * @param valor Valor a ser sacado da conta
@@ -99,9 +97,13 @@ public class Conta {
 	}
 
 	public void deposita (double valor) {
-			saldo += valor;
+		if(valor < 0){
+			throw new IllegalArgumentException("Voce tentou inserir um valor negativo!");
+		}else{
+			this.saldo += valor;
 		}
-	
+	}
+
 	public void transfere (Conta destino, double valor){
 		if (saca(valor)) {
 			destino.deposita(valor);
@@ -109,20 +111,20 @@ public class Conta {
 
 	}
 
-	 double calculaRendimento(){
+	double calculaRendimento(){
 		return saldo * 0.1;
 	}
-	 
-	 public void transfere(double valor, Conta conta){
-		 this.saca(valor);
-		 conta.deposita(valor);
-		 
-	 }
-	 
+
+	public void transfere(double valor, Conta conta){
+		this.saca(valor);
+		conta.deposita(valor);
+
+	}
+
 
 }	
 
 
 
-	
+
 

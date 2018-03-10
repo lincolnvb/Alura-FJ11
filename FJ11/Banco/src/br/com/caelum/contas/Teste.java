@@ -11,7 +11,7 @@ public class Teste {
 		
 		//OlaMundo.main(args);
 		//TelaDeContas.main(args);
-		SistemaBancario.mostraTela(false);
+		SistemaBancario.mostraTela(true);
 			
 		}
 		
